@@ -1,0 +1,143 @@
+template:
+  name: jpbarto-deployment-template
+  identifier: jpbartodeploymenttemplate
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: harnessdeployeval
+  orgIdentifier: pismo
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: Prepare
+          identifier: Prepare
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo preparing all the things
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+          tags: {}
+          variables:
+            - name: DeployInput
+              type: String
+              description: ""
+              required: false
+              value: I am deploy input variable value
+      - insert:
+          name: Plan
+          identifier: Plan
+          stages: <+input>
+      - stage:
+          name: Validate Plan
+          identifier: Validate_Plan
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo sanity checking plans
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+          tags: {}
+      - insert:
+          name: Deploy
+          identifier: Deploy
+          stages: <+input>
+      - stage:
+          name: Evaluate Deploy
+          identifier: Evaluate_Deploy
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo evaluating deployment success
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+          tags: {}
+      - insert:
+          name: Validate
+          identifier: Validate
+          stages: <+input>
+      - stage:
+          name: Evaluate Validation
+          identifier: Evaluate_Validation
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo evaluating validation output
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+          tags: {}
+      - stage:
+          name: Wrap Up
+          identifier: Wrap_Up
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo wrapping up
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+          tags: {}
