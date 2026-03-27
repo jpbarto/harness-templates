@@ -72,4 +72,18 @@ template:
                       environmentVariables: []
                       outputVariables: []
                     timeout: 10m
+                - step:
+                    type: ShellScript
+                    name: ShellScript_2
+                    identifier: ShellScript_2
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo doing more stuff
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
           tags: {}
