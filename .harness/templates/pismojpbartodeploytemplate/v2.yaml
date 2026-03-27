@@ -69,7 +69,7 @@ template:
                         spec:
                           script: |-
                             echo Checking plan files
-                            cat <+pipeline.stages.Plan.stages.Plan_TF_Deploy.spec.execution.steps.TerraformPlan_1.plan.locaTfPlanFile>
+                            cat <+pipeline.stages.Plan.stages.Plan_TF_Deploy.spec.execution.steps.TerraformPlan_1.plan.jsonFilePath>
                       environmentVariables: []
                       outputVariables: []
                     timeout: 10m
