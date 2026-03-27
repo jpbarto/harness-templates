@@ -1,0 +1,58 @@
+template:
+  name: pismo-jpbarto-deploy-template
+  identifier: pismojpbartodeploytemplate
+  versionLabel: v1
+  type: Pipeline
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: Prepare
+          identifier: Prepare
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo prepare for execution
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+          tags: {}
+      - insert:
+          name: Deploy
+          identifier: Deploy
+          stages: <+input>
+      - stage:
+          name: Wrap Up
+          identifier: Wrap_Up
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo wrapping up
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+          tags: {}
