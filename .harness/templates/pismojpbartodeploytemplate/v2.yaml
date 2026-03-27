@@ -46,8 +46,16 @@ template:
                     timeout: 10m
           tags: {}
       - insert:
+          name: Plan
+          identifier: Plan
+          stages: <+input>
+      - insert:
           name: Deploy
           identifier: Deploy
+          stages: <+input>
+      - insert:
+          name: Validate
+          identifier: Validate
           stages: <+input>
       - stage:
           name: Wrap Up
