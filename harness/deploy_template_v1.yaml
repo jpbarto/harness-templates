@@ -28,6 +28,23 @@ template:
                       environmentVariables: []
                       outputVariables: []
                     timeout: 10m
+                - step:
+                    type: ShellScript
+                    name: ShellScriptOut
+                    identifier: ShellScriptOut
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: ecgo producing output
+                      environmentVariables: []
+                      outputVariables:
+                        - name: SHELL_OUT
+                          type: String
+                          value: shell out value
+                    timeout: 10m
           tags: {}
       - insert:
           name: Deploy
