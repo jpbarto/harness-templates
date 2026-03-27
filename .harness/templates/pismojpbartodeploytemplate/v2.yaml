@@ -49,6 +49,31 @@ template:
           name: Plan
           identifier: Plan
           stages: <+input>
+      - stage:
+          name: Validate Plans
+          identifier: Validate_Plans
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: |-
+                            echo Checking plan files
+                            cat <+pipeline.stages.Plan.stages.Plan_TF_Deploy.spec.execution.steps.TerraformPlan_1.plan.locaTfPlanFile>
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+          tags: {}
       - insert:
           name: Deploy
           identifier: Deploy
