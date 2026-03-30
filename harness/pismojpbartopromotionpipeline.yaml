@@ -23,7 +23,10 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: echo examine the trigger event
+                        script: |-
+                          echo examine the trigger event
+                          echo triggered by release at <+pipeline.variables.release_repository>
+                          echo release tag is <+pipeline.variables.release_tag>
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m
