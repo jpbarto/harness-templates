@@ -23,7 +23,9 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: echo doing prep stuff
+                        script: |-
+                          echo doing prep stuff
+                          git clone https://github.com/jpbarto/harness-env
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m
