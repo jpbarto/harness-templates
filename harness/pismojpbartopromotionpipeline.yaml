@@ -42,6 +42,8 @@ pipeline:
                       spec:
                         script: |-
                           echo doing prep stuff
+                          ENV_DIR=$(mktemp -d)
+                          cd $ENV_DIR
                           git clone https://github.com/jpbarto/harness-env
                     environmentVariables: []
                     outputVariables: []
