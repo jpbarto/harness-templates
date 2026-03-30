@@ -44,3 +44,9 @@ pipeline:
                     outputVariables: []
                   timeout: 10m
         tags: {}
+  variables:
+    - name: release_repository
+      type: String
+      description: ""
+      required: true
+      value: ""
