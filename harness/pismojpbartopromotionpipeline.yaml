@@ -49,4 +49,9 @@ pipeline:
       type: String
       description: ""
       required: true
-      value: ""
+      value: <+eventPayload.repository.html_url>
+    - name: release_tag
+      type: String
+      description: ""
+      required: false
+      value: <+eventPayload.release.tag_name>
