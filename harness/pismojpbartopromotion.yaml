@@ -1,0 +1,30 @@
+pipeline:
+  name: pismo-jpbarto-promotion
+  identifier: pismojpbartopromotion
+  projectIdentifier: pismojpbartopromotion
+  orgIdentifier: pismo
+  tags: {}
+  stages:
+    - stage:
+        name: Prepare
+        identifier: Prepare
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo doing prep stuff
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
