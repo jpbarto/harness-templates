@@ -15,8 +15,8 @@ pipeline:
             steps:
               - step:
                   type: ShellScript
-                  name: ShellScript_2
-                  identifier: ShellScript_2
+                  name: Examine Trigger
+                  identifier: ExamineTrigger
                   spec:
                     shell: Bash
                     executionTarget: {}
@@ -32,8 +32,8 @@ pipeline:
                   timeout: 10m
               - step:
                   type: ShellScript
-                  name: ShellScript_1
-                  identifier: ShellScript_1
+                  name: Clone Environment Repo
+                  identifier: CloneEnvRepo
                   spec:
                     shell: Bash
                     executionTarget: {}
@@ -45,6 +45,26 @@ pipeline:
                           ENV_DIR=$(mktemp -d)
                           cd $ENV_DIR
                           git clone https://github.com/jpbarto/harness-env
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+              - step:
+                  type: ShellScript
+                  name: Explore Worker
+                  identifier: Explore_Worker
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          echo === pwd ===
+                          pwd
+                          echo === tree ===
+                          tree
+                          echo === ls / ===
+                          ls -alh /
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m
